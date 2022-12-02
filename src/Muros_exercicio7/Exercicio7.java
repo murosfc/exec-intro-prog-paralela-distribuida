@@ -4,7 +4,7 @@ Crie e utilize uma função para preencher o vetor e uma função recursiva para
 vetor. Esta informação tem que ser impressa na função main.
 Obs. 1: Não é permitido utilizar qualquer estrutura de dados auxiliar;
 Obs. 2: Não é permitido utilizar qualquer estrutura de repetição na função recursiva. */
-package exercicio7;
+package Muros_exercicio7;
 
 import java.util.Random;
 
