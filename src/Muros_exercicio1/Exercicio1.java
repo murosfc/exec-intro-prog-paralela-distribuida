@@ -1,4 +1,3 @@
-
 /* Considere a matriz A = [aij ]n×m, onde n = 4 e m = 5, com número inteiros gerados aleatoriamente de 1
 até 20. Faça um algoritmo para gerar a matriz A e verificar se ela satisfaz a seguinte condição:
 Crie e utilize uma função para gerar a matriz e outra para realizar a verificação. De acordo com o retorno
@@ -51,7 +50,7 @@ public class Exercicio1 {
 		}
 		System.out.println("Menor somatório das linhas= "+menorSoma);
 		System.out.println("Maior produtório das colunas= "+maiorProduto);
-		if(menorSoma == maiorProduto)
+		if(menorSoma <= maiorProduto)
 			return true;
 		else return false;
 		
