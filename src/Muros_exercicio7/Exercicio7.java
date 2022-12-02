@@ -12,14 +12,14 @@ public class Exercicio7 {
 	    
 	    public static void main(String[] args) {
 	        int vetor[] = new int[50];
-	        vetor = filledVector(vetor.length);	        
+	        vetor = fillVector(vetor.length);	        
 	        System.out.println("Maior valor do vetor = " + findLargest(vetor, 0));   
 	    }
 	    
-	    public static int[] filledVector(int size){
-	    	int vetor[] = new int[50];
+	    public static int[] fillVector(int size){	    	
+	    	int vetor[] = new int[size];
 	        Random gerador = new Random();
-	        for (int i=0; i<50; i++){
+	        for (int i=0; i<size; i++){
 	            vetor[i]= gerador.nextInt(100) +1;
 	        }
 	        return vetor;
