@@ -1,13 +1,13 @@
 /*
-Considere um vetor com 20 números naturais maiores do que 1 lidos pelo teclado. Faça um algoritmo
-recursivo que organize este vetor de modo que os números compostos fiquem nas primeiras posições e os
-números que não são compostos nas últimas posições.
-Crie e utilize duas funções: uma para preencher o vetor e outra recursivo para realizar a organização do
-mesmo. Crie e utilize também outra função para retornar 1, se um número natural for composto, ou retornar
-0, caso contrário.
-Obs. 1: Um número natural C é composto se ele tem mais de dois divisores naturais distintos;
-Obs. 2: Não é permitido utilizar qualquer estrutura de dados para auxiliar a organização;
-Obs. 3: Não é permitido utilizar qualquer estrutura de repetição na função recursiva. 
+Considere um vetor com 20 nï¿½meros naturais maiores do que 1 lidos pelo teclado. Faï¿½a um algoritmo
+recursivo que organize este vetor de modo que os nï¿½meros compostos fiquem nas primeiras posiï¿½ï¿½es e os
+nï¿½meros que nï¿½o sï¿½o compostos nas ï¿½ltimas posiï¿½ï¿½es.
+Crie e utilize duas funï¿½ï¿½es: uma para preencher o vetor e outra recursivo para realizar a organizaï¿½ï¿½o do
+mesmo. Crie e utilize tambï¿½m outra funï¿½ï¿½o para retornar 1, se um nï¿½mero natural for composto, ou retornar
+0, caso contrï¿½rio.
+Obs. 1: Um nï¿½mero natural C ï¿½ composto se ele tem mais de dois divisores naturais distintos;
+Obs. 2: Nï¿½o ï¿½ permitido utilizar qualquer estrutura de dados para auxiliar a organizaï¿½ï¿½o;
+Obs. 3: Nï¿½o ï¿½ permitido utilizar qualquer estrutura de repetiï¿½ï¿½o na funï¿½ï¿½o recursiva. 
  */
 package Muros_exercicio6;
 
@@ -18,8 +18,8 @@ import Muros_exercicio4.Exercicio4;
 public class Exercicio6 {
 
 	public static void main(String[] args) {
-		//int vetor[] = lerVetor(20);
-		int vetor[] = Exercicio4.fillVector(20);
+		int vetor[] = lerVetor(20);
+		//int vetor[] = Exercicio4.fillVector(4); para facilitar o preenchimento para testes
 		System.out.println("Vetor gerado");
 		printVet(vetor);
 		ordenar(vetor, 0);
@@ -29,10 +29,10 @@ public class Exercicio6 {
 	public static int[] lerVetor(int size) {
 		int vetor[] = new int[size];		
 		Scanner elemento = new Scanner(System.in);
-		System.out.println("Digite "+size+" numeros maiores que zero para compor o vetor.");
+		System.out.println("Digite "+size+" numeros maiores que 1 para compor o vetor.");
 		for (int i=0; i<size; i++) {
 			int num = 0;
-			while (num <= 0){
+			while (num <= 1){
 				System.out.print(i+"- ");
 				vetor[i] = elemento.nextInt();
 				num = vetor[i];
@@ -42,39 +42,19 @@ public class Exercicio6 {
 		return vetor;
 	}
 	
-	private static boolean isComposto(int num) {
+	private static int isComposto(int num) {
 		int contDivisores= 0;
 		for (int i=1; i<=num; i++) {
 			if (num%i == 0)
 				contDivisores++;
 		}
 		if (contDivisores > 2)
-			return true;
-		return false;
+			return 1;
+		return 0;
 	}
-	
-	//esta função está incorreta.
+		
 	private static int ordenar(int[] vetor, int indice) {
-		int valorAtual = vetor[indice];
-		if (indice >= vetor.length) {
-			return - 1; //controle para não estourar o limite do vetor
-		}
-		if (indice == 0 && isComposto(vetor[indice])) 
-			ordenar(vetor, indice+1);
-			else if(isComposto(vetor[indice]))
-				return indice;
-			else {
-				int nextComposto = ordenar(vetor, indice+1);  
-				if(nextComposto > 0) {
-					int aux = 0;
-					aux = vetor[indice];
-					vetor[indice] = vetor[nextComposto];
-					vetor[nextComposto] = aux;
-				}			
-			}
-		if (indice != 0)
-			return ordenar(vetor, indice+1);
-		else return 0;
+		//TODO
 	}
 	
 	public static void printVet(int[] vetor) {
