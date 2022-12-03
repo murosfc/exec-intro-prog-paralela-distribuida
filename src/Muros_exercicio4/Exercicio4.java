@@ -14,7 +14,9 @@ public class Exercicio4 {
 		int vetor[] = fillVector(30);
 		System.out.println("Vetor gerado:");
 		printVet(vetor);
-		
+		vetor = simpleSort(vetor);
+		System.out.println("\n\nVetor ordenado:");
+		printVet(vetor);		
 	}
 	
 	public static int[] fillVector(int size){
@@ -27,15 +29,23 @@ public class Exercicio4 {
     }
 	
 	public static int[] simpleSort(int[] vetor) {
-		//TODO
+		int aux = 0;
+		for (int i=0; i<vetor.length; i++) 
+			for (int j=i+1; j<vetor.length; j++) {
+				if(vetor[i]<vetor[j]) {
+					aux = vetor[i];
+					vetor[i] = vetor[j];
+					vetor[j] = aux;
+				}
+			}
 		return vetor;
 	}
 	
 	public static void printVet(int[] vetor) {
 		for (int i=0; i<vetor.length; i++) {
 			if (i == vetor.length+1)
-				System.out.print("[" + (i+1) +"- "+vetor[i]+"]");
-			else System.out.print("["+ (i+1) +"- "+vetor[i]+"], ");
+				System.out.print(vetor[i]);
+			else System.out.print(vetor[i]+", ");
 		}
 	}
 
