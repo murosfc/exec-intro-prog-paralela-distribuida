@@ -15,7 +15,7 @@ public class Exercicio4 {
 		System.out.println("Vetor gerado:");
 		printVet(vetor);
 		vetor = simpleSort(vetor);
-		System.out.println("\n\nVetor ordenado:");
+		System.out.println("\n\nacVetor ordenado:");
 		printVet(vetor);		
 	}
 	
@@ -43,7 +43,7 @@ public class Exercicio4 {
 	
 	public static void printVet(int[] vetor) {
 		for (int i=0; i<vetor.length; i++) {
-			if (i == vetor.length+1)
+			if (i == vetor.length-1)
 				System.out.print(vetor[i]);
 			else System.out.print(vetor[i]+", ");
 		}
