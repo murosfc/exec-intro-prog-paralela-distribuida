@@ -27,7 +27,7 @@ public class Exercicio7 {
 	    
 	    public static int findLargest(int[] vetor, int index) {
 	    	int maior = 0;
-	    	if (index == (vetor.length))
+	    	if (index == vetor.length)
 	    		return 0;
 	    	maior = findLargest(vetor, index+1);
 	    	if (maior > vetor[index])
