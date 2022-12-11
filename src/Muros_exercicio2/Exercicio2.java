@@ -1,9 +1,9 @@
-/*2) Considere uma matriz M de ordem 4 de números inteiros gerados aleatoriamente de 0 até 29. Faça um
-algoritmo para gerar esta matriz e imprimir na tela se ela é ou não uma Matriz Ortogonal.
-Crie e utilize quatro funções: uma para gerar a matriz M, outra para calcular a sua Matriz Transposta
-(MT ), outra calcular a multiplicação M MT e a quarta para retornar se a matriz M é Ortogonal ou não. A
-impressão desta informação tem que ser na função main.
-Obs.: Se uma matriz quadrada M é uma matriz ortogonal, então M  MT = I, onde MT é a Matriz
+/*2) Considere uma matriz M de ordem 4 de nï¿½meros inteiros gerados aleatoriamente de 0 atï¿½ 29. Faï¿½a um
+algoritmo para gerar esta matriz e imprimir na tela se ela ï¿½ ou nï¿½o uma Matriz Ortogonal.
+Crie e utilize quatro funï¿½ï¿½es: uma para gerar a matriz M, outra para calcular a sua Matriz Transposta
+(MT ), outra calcular a multiplicaï¿½ï¿½o M MT e a quarta para retornar se a matriz M ï¿½ Ortogonal ou nï¿½o. A
+impressï¿½o desta informaï¿½ï¿½o tem que ser na funï¿½ï¿½o main.
+Obs.: Se uma matriz quadrada M ï¿½ uma matriz ortogonal, entï¿½o M  MT = I, onde MT ï¿½ a Matriz
 Transposta de M e I a Matriz Identidade. */
 package Muros_exercicio2;
 
@@ -11,18 +11,16 @@ import java.util.Random;
 
 public class Exercicio2 {
 
-	public static void main(String[] args) {
-		int matriz[][] = new int[4][4];
-		matriz = fillMat(matriz.length, matriz[0].length);
-		
-		System.out.print("Matriz gerada: ");
-		printMat(matriz);
-		
-		int matrizTransposta[][] = transpose(matriz);
-		System.out.print("Matriz transposta: ");
-		printMat(matrizTransposta);		
-		
-		if (checkIfOrthogonal(matriz, matrizTransposta)) 
+		public static void main(String[] args) {
+		int m[][] = new int[4][4];
+		//gerar a matriz M
+		m = fillMat(m.length, m[0].length);	
+		//calcular a sua Matriz Transposta
+		int matrizTransposta[][] = transpose(m);
+		//multiplicar as duas matrizes
+		int matrizResultado[][] = multiplicaMatriz(m, matrizTransposta);
+		//verificar se ela eh ortogonal
+		if (checkIfOrthogonal(matrizResultado)) 
 			System.out.println("\nA matriz eh ortogonal");
 		else System.out.println("\nA matriz nao eh ortogonal");
 	}
@@ -45,38 +43,33 @@ public class Exercicio2 {
 			}
 		return transposta;
 	}
-	
-    public static boolean checkIfOrthogonal(int[][] A, int[][] B){        
-        int n = A[0].length; //A.columns = B.rows        
-        if(n != B.length) //condição básica para multiplicação de matrizes. Verfica se A.columns = B.rows
+
+	public static int[][] multiplicaMatriz(int[][] A, int[][] B) {
+		int n = A[0].length; //A.columns = B.rows        
+        if(n != B.length) //condiï¿½ï¿½o bï¿½sica para multiplicaï¿½ï¿½o de matrizes. Verfica se A.columns = B.rows
             throw new IllegalArgumentException("A.columns != B.rows");        
         int rows = A.length, cols = B[0].length;      
         int[][] C = new int[rows][cols];
-        boolean ortogonal = true;
         for(int i = 0; i < rows; i++){
             for(int j = 0; j < cols; j++){
+				C[i][j] = 0;
                 for(int k = 0; k < n; k++){
                     C[i][j] += A[i][k] * B[k][j];
                 }
-                if (i==j && C[i][j] != 1 || i!=j && C[i][j] != 0)
+            }
+        }
+		return C; 	    
+	}
+	
+    public static boolean checkIfOrthogonal(int[][] C){        
+        int rows = C.length, cols = C[0].length;      
+        boolean ortogonal = true;
+        for(int i = 0; i < rows; i++){
+            for(int j = 0; j < cols; j++){
+                if ((i==j && C[i][j] != 1) || (i!=j && C[i][j] != 0))
 					ortogonal = false;	
             }
         }
-        System.out.print("Matriz resultante da multiplicacao: ");
-		printMat(C);
 		return ortogonal;        
     }
-	
-	public static void printMat(int[][] matriz) {
-		for (int i=0;i<matriz.length;i++) {
-			System.out.println("");
-			for (int j=0; j<matriz[0].length;j++) {
-				System.out.print(matriz[i][j]);
-				if (j!=matriz[0].length-1)
-					System.out.print(",\t");
-			}
-		}
-		System.out.println("\n");
-	}
-
 }
