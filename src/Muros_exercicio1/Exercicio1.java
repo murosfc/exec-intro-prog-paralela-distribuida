@@ -29,12 +29,12 @@ public class Exercicio1 {
 	}
 	
 	public static boolean matCheck(int[][] matriz) {
-		int menorSoma=0, maiorProduto=0, aux=0, m = matriz.length, n = matriz[0].length;		
+		int menorSoma = 0, maiorProduto = 0, aux = 0, m = matriz.length, n = matriz[0].length;		
 		//menor somatório linhas		
 		for (int i=0; i<m ; i++) {
 			aux=0;
 			for (int j=0;j<n;j++)
-				aux+=matriz[i][j];
+				aux += Math.abs(matriz[i][j]);
 			if (i==0 || menorSoma>aux)
 				menorSoma=aux;    
 		}
@@ -43,17 +43,14 @@ public class Exercicio1 {
 			aux=1;
 			for (int i=0;i<m;i++)
 				aux *= matriz[i][j];
-			if (j == 0)
+			if (j == 0) 
 				maiorProduto = aux;
 			else if (maiorProduto<aux)
 				maiorProduto = aux;			
 		}
-		System.out.println("Menor somatório das linhas= "+menorSoma);
-		System.out.println("Maior produtório das colunas= "+maiorProduto);
 		if(menorSoma <= maiorProduto)
 			return true;
 		else return false;
-		
-	}	
+	}
 
 }
