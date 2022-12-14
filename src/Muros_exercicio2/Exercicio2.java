@@ -30,6 +30,7 @@ public class Exercicio2 {
 		Random gerador = new Random();
 		for (int i=0; i<linhas ;i++)
 			for (int j=0; j<colunas; j++) {
+				//gerar 30 numeros aleatorios
 				matriz[i][j] = gerador.nextInt(30);
 			}				
 		return matriz;
@@ -39,6 +40,7 @@ public class Exercicio2 {
 		int transposta[][] = new int[matriz[0].length][matriz.length];
 		for (int i=0;i<matriz.length;i++)
 			for (int j=0;j<matriz[0].length;j++) {
+				//gerar uma matriz transposta(linha vira coluna e coluna vira linha)
 				transposta[j][i] = matriz [i][j];
 			}
 		return transposta;
@@ -54,6 +56,7 @@ public class Exercicio2 {
             for(int j = 0; j < cols; j++){
 				C[i][j] = 0;
                 for(int k = 0; k < n; k++){
+					//multiplicar cada linha da matriz A linha por todas as colunas da matriz B
                     C[i][j] += A[i][k] * B[k][j];
                 }
             }
@@ -66,6 +69,7 @@ public class Exercicio2 {
         boolean ortogonal = true;
         for(int i = 0; i < rows; i++){
             for(int j = 0; j < cols; j++){
+				//verificar se a diagonal eh 1 e se o resto eh zero(matriz identidade)
                 if ((i==j && C[i][j] != 1) || (i!=j && C[i][j] != 0))
 					ortogonal = false;	
             }
