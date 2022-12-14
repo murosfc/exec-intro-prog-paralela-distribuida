@@ -23,6 +23,7 @@ public class Exercicio1 {
 		Random gerador = new Random();
 		for (int i=0; i<linhas ;i++)
 			for (int j=0; j<colunas; j++) {
+				//gerar numeros aleatorios entre 1 e 20
 				matriz[i][j] = gerador.nextInt(20) + 1;
 			}				
 		return matriz;
@@ -35,6 +36,7 @@ public class Exercicio1 {
 			aux=0;
 			for (int j=0;j<n;j++)
 				aux += Math.abs(matriz[i][j]);
+			//sempre pegar o menor valor encontrado ate entao.
 			if (i==0 || menorSoma>aux)
 				menorSoma=aux;    
 		}
@@ -43,11 +45,13 @@ public class Exercicio1 {
 			aux=1;
 			for (int i=0;i<m;i++)
 				aux *= matriz[i][j];
+			//sempre pegar o maior produtório
 			if (j == 0) 
 				maiorProduto = aux;
 			else if (maiorProduto<aux)
 				maiorProduto = aux;			
 		}
+		//retornar true se o somatorio for menor que o produtorio
 		if(menorSoma <= maiorProduto)
 			return true;
 		else return false;
